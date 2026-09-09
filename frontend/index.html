@@ -1,63 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Payment Schedule</title>
 
-    <link rel="stylesheet" href="style.css">
-</head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<body>
-
+  <body>
     <div class="container">
+      <h1>Payment Schedule</h1>
 
-        <h1>Payment Schedule</h1>
+      <form id="projectForm">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required />
 
-        <form id="projectForm">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" required />
 
-            <label for="name">Name</label>
-            <input
-                type="text"
-                id="name"
-                name="name"
-                required
-            >
+        <label for="startDate">Start Date</label>
+        <input type="date" id="startDate" name="startDate" required />
 
-            <label for="phone">Phone Number</label>
-            <input
-                type="tel"
-                id="phone"
-                name="phone"
-                required
-            >
+        <label for="projectValue">Project Value</label>
+        <input type="number" id="projectValue" name="projectValue" required />
 
-            <label for="startDate">Start Date</label>
-            <input
-                type="date"
-                id="startDate"
-                name="startDate"
-                required
-            >
+        <button type="submit">Create Project</button>
+      </form>
 
-            <label for="projectValue">Project Value</label>
-            <input
-                type="number"
-                id="projectValue"
-                name="projectValue"
-                required
-            >
+      <div id="projectDetails"></div>
+      <!-- 
+       <div id="paymentSchedule"></div> -->
 
-            <button type="submit">
-                Create Project
-            </button>
+      <div id="paymentSchedule"></div>
 
-        </form>
-
+      <button id="downloadPdf" style="display: none">
+        Download Payment Schedule PDF
+      </button>
     </div>
 
-    <script src="script.js"></script>
+    
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-</body>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+
+     <script src="script.js"></script>
+  </body>
 </html>
