@@ -387,7 +387,8 @@ form.addEventListener("submit", async function (event) {
         // ==================================================
 
         const response = await fetch(
-            "http://localhost:3000/api/projects",
+            // "http://localhost:3000/api/projects",
+               "/api/projects",
             {
                 method: "POST",
 
@@ -630,10 +631,12 @@ async function generatePDF(data) {
     // ==================================================
 
     const logo =
-        await loadImage("../assets/logo.png");
+        // await loadImage("../assets/logo.png");
+        await loadImage("/assets/logo.png");
 
     const footer =
-        await loadImage("../assets/footer.png");
+        // await loadImage("../assets/footer.png");
+        await loadImage("/assets/footer.png");
 
 
     // ==================================================

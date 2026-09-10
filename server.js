@@ -13,7 +13,7 @@
 // const app = express();
 
 // const PORT = 3000;
-
+6
 
 
 // const pool = new Pool({
@@ -100,6 +100,7 @@ const express = require("express");
 const { Pool } = require("pg");
 const fs = require("fs");
 const cors = require("cors");
+const path = require("path");
 require("dotenv").config();
 
 const app = express();
@@ -127,9 +128,33 @@ const pool = new Pool({
 app.use(express.json());
 
 // Test API
+// app.get("/", (req, res) => {
+//     res.send("Payment Schedule Backend is running");
+// });
+
+
+
+
+
+
+// Serve frontend files
+// app.use(express.static(path.join(__dirname, "frontend")));
+
+// // Serve assets
+// app.use("/assets", express.static(path.join(__dirname, "assets")));
+
+// // Open frontend
+// app.get("/", (req, res) => {
+//     res.sendFile(path.join(__dirname, "frontend", "index.html"));
+// });
+
+app.use(express.static(path.join(__dirname, "public")));
+
 app.get("/", (req, res) => {
-    res.send("Payment Schedule Backend is running");
+    res.sendFile(path.join(__dirname, "public", "index.html"));
 });
+
+
 
 // Connect to database
 pool.query("SELECT NOW()", (err, result) => {
@@ -144,7 +169,13 @@ pool.query("SELECT NOW()", (err, result) => {
     console.log("Database time:", result.rows[0].now);
 
     // Read schema.sql
-    const schema = fs.readFileSync("database/schema.sql", "utf8");
+    // const schema = fs.readFileSync("database/schema.sql", "utf8");
+
+
+    const schema = fs.readFileSync(
+    path.join(__dirname, "database", "schema.sql"),
+    "utf8"
+);
 
     // Create tables if they don't already exist
     pool.query(schema, (err) => {
